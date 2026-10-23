@@ -1,6 +1,6 @@
 # open-macaron/config
 
-Who [macaron-bot](https://github.com/open-macaron/macaron) works for, and how: the trusted projects, their repositories, the users and bots allowed to trigger it, budgets, caps, models and environments. The controller reads it from this repository's [published snapshot](#published-snapshot), and a merged change is live within seconds, without a deploy.
+Who [macaron-bot](https://github.com/open-macaron/macaron) works for, and how: the trusted projects, their repositories, the review bots whose comments count, budgets, caps, models and environments. Who may trigger it is not here: it's an account of the macaron web app, invited by an administrator, with the capabilities they granted. The controller reads it from this repository's [published snapshot](#published-snapshot), and a merged change is live within seconds, without a deploy.
 
 Everything here is public. The file formats are JSON Schemas in [`open-macaron/macaron`](https://github.com/open-macaron/macaron/tree/main/packages/contracts/schemas) (`config-*.schema.json`), and its [SCALING.md §2](https://github.com/open-macaron/macaron/blob/main/docs/SCALING.md) explains the hierarchy.
 
@@ -10,7 +10,7 @@ Everything here is public. The file formats are JSON Schemas in [`open-macaron/m
 global.yaml                          defaults for every repository, global caps (platform team)
 projects/<project>/
 ├── OWNERS.yaml                      who approves changes in this folder
-├── project.yaml                     trusted users and bots, budget, concurrency, project defaults
+├── project.yaml                     review bots, budget, concurrency, project defaults
 └── repos/<repo>.yaml                one upstream repository: its fork, commands, overrides
 ```
 
@@ -40,7 +40,7 @@ Find an account's id with `gh api users/<login> --jq .id`. **The id is what coun
 - every changed path (both sides of a rename) is inside `projects/<project>/`, and that folder's `OWNERS.yaml` **already exists on `main`**;
 - for each of those folders, an owner listed in its `OWNERS.yaml` **on `main`** (by id) has a standing approval on **the latest commit** of the pull request, and no owner of that folder has a standing "changes requested";
 - the author's own approval doesn't count;
-- **no file changes a setting reserved for the platform team**: `users`, `bots`, `budget`, `concurrency`, `budgets`, `caps`, `reviewCost`, `runsOn` or `platforms`, at the top level or under a project's `defaults`. These decide who can trigger the bot and what it may spend or run on;
+- **no file changes a setting reserved for the platform team**: `users` (deprecated, ignored), `bots`, `budget`, `concurrency`, `budgets`, `caps`, `reviewCost`, `runsOn` or `platforms`, at the top level or under a project's `defaults`. These decide whose comments count and what the bot may spend or run on;
 - the files are valid, checked by the pinned `config-cli` with the controller's own validation.
 
 It then merges exactly the commit it checked (squash): if something was pushed in the meantime, GitHub refuses.
@@ -63,7 +63,7 @@ Approvals are checked by a workflow rather than GitHub's branch protection, so t
 - Only the job that merges has write permission. It never checks out the pull request. The job that does check it out (to validate it) can only read, and no workflow here uses a cache.
 - The repository has no secrets.
 
-On top of this, the controller keeps an operator allowlist outside this repository (`MACARON_ALLOWED_USER_IDS`), and refuses a snapshot it can't validate or whose models the LLM backend can't price, keeping the previous one.
+On top of this, the controller refuses a snapshot it can't validate or whose models the LLM backend can't price, keeping the previous one.
 
 ## Published snapshot
 
