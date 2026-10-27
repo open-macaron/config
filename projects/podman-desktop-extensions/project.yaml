@@ -5,6 +5,8 @@
 # multi-stage build (podman-desktop/gh-extensions-actions#5), which is what the
 # podman-desktop-extensions environment (open-macaron/runner) builds and runs.
 # The others join once their Containerfile follows those guidelines.
+# Also podman-desktop/podman-desktop-catalog, the catalog that publishes them, with its own
+# podman-desktop-catalog environment.
 
 project: podman-desktop-extensions
 owners: "@open-macaron/maintainers"

@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/open-macaron/macaron/main/packages/contracts/schemas/config-repo.schema.json
+#
+# podman-desktop/podman-desktop-catalog: Podman Desktop's extension catalog, mostly pull requests
+# that publish an extension version in static/. The podman-desktop-catalog environment
+# (open-macaron/runner) installs the latest Podman Desktop; when a change touches static/, the agent
+# serves that catalog and points Podman Desktop at it (extensions.registryUrl), as its reviewers do.
+
+repo: podman-desktop/podman-desktop-catalog
+fork: 90s9ke-podman-desktop-catalog
+environment:
+  source: shared
+  name: podman-desktop-catalog
+  params: {}
+commands:
+  build: pnpm build
+  test: pnpm test:unit
+  lint: pnpm lint:check
