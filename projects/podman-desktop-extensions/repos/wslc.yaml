@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/open-macaron/macaron/main/packages/contracts/schemas/config-repo.schema.json
+#
+# podman-desktop/wslc. No test script yet (podman-desktop/wslc#2 is the scaffold).
+
+repo: podman-desktop/wslc
+commands:
+  build: pnpm build
+  lint: pnpm lint:check
