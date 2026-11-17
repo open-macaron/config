@@ -68,8 +68,14 @@ repos:
       test: pnpm test:unit
       lint: pnpm lint:check
 
+  extension-agent-skills:
+    commands: { build: pnpm build, lint: pnpm lint:check }
+  extension-apple-container:
+    commands: { build: pnpm build, test: pnpm test, lint: pnpm lint:check }
   extension-grype:
     commands: { build: pnpm build, test: pnpm test:unit, lint: pnpm lint:check }
+  extension-kind:
+    commands: { build: pnpm build, test: pnpm test, lint: pnpm lint:check }
   extension-kreate:
     commands: { build: pnpm build, test: pnpm test:unit, lint: pnpm lint:check }
   extension-kubernetes-contexts:

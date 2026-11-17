@@ -28,3 +28,10 @@ defaults:
 repos:
   podman-desktop-hummingbird-ext:
     commands: { build: pnpm build, test: pnpm test:unit, lint: pnpm lint:check }
+  podman-desktop-ibmcloud-account-ext:
+    commands: { build: pnpm build, test: pnpm test, lint: pnpm lint:check }
+  # A monorepo: the extension in packages/extension, its webview in packages/webview.
+  podman-desktop-redhat-lightspeed-ext:
+    commands: { build: pnpm build, test: pnpm test, lint: pnpm lint:check }
+  podman-desktop-rhel-ext:
+    commands: { build: pnpm build, test: pnpm test, lint: pnpm lint:check }

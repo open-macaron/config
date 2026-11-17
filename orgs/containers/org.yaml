@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/open-macaron/macaron/main/packages/contracts/schemas/config-org.schema.json
+#
+# containers: its Podman Desktop extensions only (no fallback: the org hosts Podman, Buildah and
+# much more).
+
+org: containers
+id: 5874934
+owners: "@open-macaron/maintainers"
+bots: []
+concurrency: 1
+defaults:
+  runsOn: ubuntu-26.04
+  timeoutMinutes: 45
+  knowledge: podman-desktop-extensions
+  environment:
+    source: shared
+    name: podman-desktop-extensions
+    params: {}
+  budgets:
+    implement: 5.00
+    reproduce: 3.00
+    verify: 3.00
+    address_review: 2.00
+    review: 0.50
+  # The DCO check runs on these repositories' pull requests.
+  contribution:
+    dco: true
+repos:
+  # A monorepo: the backend (the extension) and the frontend (its webview) in packages/.
+  podman-desktop-extension-ai-lab:
+    commands: { build: pnpm build, test: pnpm test:unit, lint: pnpm lint:check }
