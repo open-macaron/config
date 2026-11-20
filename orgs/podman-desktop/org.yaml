@@ -68,33 +68,48 @@ repos:
       test: pnpm test:unit
       lint: pnpm lint:check
 
+  # `on windows` runs any extension on windows-2025 (the environment's Windows steps: Podman with
+  # a WSL machine, the runner's desktop).
   extension-agent-skills:
+    platforms: { windows: { runsOn: windows-2025 } }
     commands: { build: pnpm build, lint: pnpm lint:check }
   extension-apple-container:
+    platforms: { windows: { runsOn: windows-2025 } }
     commands: { build: pnpm build, test: pnpm test, lint: pnpm lint:check }
   extension-grype:
+    platforms: { windows: { runsOn: windows-2025 } }
     commands: { build: pnpm build, test: pnpm test:unit, lint: pnpm lint:check }
   extension-kind:
+    platforms: { windows: { runsOn: windows-2025 } }
     commands: { build: pnpm build, test: pnpm test, lint: pnpm lint:check }
   extension-kreate:
+    platforms: { windows: { runsOn: windows-2025 } }
     commands: { build: pnpm build, test: pnpm test:unit, lint: pnpm lint:check }
   extension-kubernetes-contexts:
+    platforms: { windows: { runsOn: windows-2025 } }
     commands: { build: pnpm build, test: pnpm test, lint: pnpm lint:check }
   extension-kubernetes-dashboard:
+    platforms: { windows: { runsOn: windows-2025 } }
     commands: { build: pnpm build, test: pnpm test, lint: pnpm lint:check }
   extension-layers-explorer:
+    platforms: { windows: { runsOn: windows-2025 } }
     commands: { build: pnpm build, test: pnpm test, lint: pnpm lint:check }
   extension-lima:
+    platforms: { windows: { runsOn: windows-2025 } }
     commands: { build: pnpm build, test: pnpm test }
   extension-minikube:
+    platforms: { windows: { runsOn: windows-2025 } }
     commands: { build: pnpm build, test: pnpm test, lint: pnpm lint:check }
   # The bot's fork already exists: it served the test fork axel7083/extension-podman-quadlet.
   extension-podman-quadlet:
+    platforms: { windows: { runsOn: windows-2025 } }
     commands: { build: pnpm build, test: pnpm test:unit, lint: pnpm lint:check }
   extension-postgresql:
+    platforms: { windows: { runsOn: windows-2025 } }
     commands: { build: pnpm build, test: pnpm test:unit, lint: pnpm lint:check }
   # No test script yet (podman-desktop/wslc#2 is the scaffold).
   wslc:
+    platforms: { windows: { runsOn: windows-2025 } }
     commands: { build: pnpm build, lint: pnpm lint:check }
 
 fallback:
