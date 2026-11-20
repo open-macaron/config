@@ -15,8 +15,8 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  CONFIG_CLI_URL: https://github.com/open-macaron/macaron/releases/download/%40open-macaron%2Fconfig-cli%400.2.0/config-cli.mjs
-  CONFIG_CLI_SHA256: "d061ccf17a2aa862f58e07cc4245923277a8f88376a073506de1414ce8ef9fbb"
+  CONFIG_CLI_URL: https://github.com/open-macaron/macaron/releases/download/%40open-macaron%2Fconfig-cli%400.2.4/config-cli.mjs
+  CONFIG_CLI_SHA256: "97cfe3d8062f06c06093bf951831d5921b06dfa4a26c00fa5fa901cad3e91c01"
 
 jobs:
   build:
