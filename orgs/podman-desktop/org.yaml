@@ -89,7 +89,11 @@ repos:
   extension-minikube:
     commands: { build: pnpm build, test: pnpm test, lint: pnpm lint:check }
   # The bot's fork already exists: it served the test fork axel7083/extension-podman-quadlet.
+  # `on windows` runs it on Windows, where quadlets live in the Podman machine (WSL).
   extension-podman-quadlet:
+    platforms:
+      windows:
+        runsOn: windows-2025
     commands: { build: pnpm build, test: pnpm test:unit, lint: pnpm lint:check }
   extension-postgresql:
     commands: { build: pnpm build, test: pnpm test:unit, lint: pnpm lint:check }
