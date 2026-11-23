@@ -10,6 +10,11 @@ bots: []
 concurrency: 1
 defaults:
   runsOn: ubuntu-26.04
+  # `on windows` runs any of them on windows-2025 (the environment's Windows steps: Podman with a
+  # WSL machine, the runner's desktop).
+  platforms:
+    windows:
+      runsOn: windows-2025
   timeoutMinutes: 45
   knowledge: podman-desktop-extensions
   environment:
