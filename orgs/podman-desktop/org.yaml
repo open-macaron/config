@@ -107,10 +107,9 @@ repos:
   extension-postgresql:
     platforms: { windows: { runsOn: windows-2025 } }
     commands: { build: pnpm build, test: pnpm test:unit, lint: pnpm lint:check }
-  # No test script yet (podman-desktop/wslc#2 is the scaffold).
-  wslc:
+  extension-wslc:
     platforms: { windows: { runsOn: windows-2025 } }
-    commands: { build: pnpm build, lint: pnpm lint:check }
+    commands: { build: pnpm build, test: pnpm test, lint: pnpm lint:check }
 
 fallback:
   environment:
